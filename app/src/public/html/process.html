@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OliveOil Supply Chain</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache"/>
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      </head>
+      <body>
+        <div class="container-contact100">
+          <div class="wrap-contact100">
+            <form class="contact100-form validate-form"
+            action="http://localhost:8080/results.html">
+
+              <span class="contact100-form-sub-title">
+                OliveOil Distributor
+              </span>
+
+              <label class="label-input100" for="first-name">Enter OliveOil Bottle ID & Price for Distribution*</label>
+              <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Enter valid Bottle ID">
+                <input id="dist-bottle-id" class="input100" type="text" placeholder="OliveOil Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Enter valid Price">
+                <input id="dist-bottle-price"class="input100" type="text" placeholder="OliveOil Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.buyBottleForDistribution()">
+                  Purchase
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                OliveOil Retailer
+              </span>
+
+              <label class="label-input100" for="first-name">Enter OliveOil Bottle ID & Price For Retail*</label>
+              <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Enter valid Bottle ID">
+                <input id="ret-bottle-id" class="input100" type="text" placeholder="OliveOil Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Enter valid Price">
+                <input id="ret-bottle-price"class="input100" type="text" placeholder="OliveOil Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.buyBottleForRetail()">
+                  Purchase
+                </button>
+              </div>
+
+              <label class="label-input100" for="first-name">Enter OliveOil Bottle ID & Price For Sale*</label>
+              <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Enter valid Bottle ID">
+                <input id="sale-bottle-id" class="input100" type="text" placeholder="OliveOil Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Enter valid Price">
+                <input id="sale-bottle-price"class="input100" type="text" placeholder="OliveOil Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.bottleForSale()">
+                  For Sale
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                Customer
+              </span>
+
+              <label class="label-input100" for="first-name">Enter OliveOil Bottle ID & Price *</label>
+              <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Enter valid Grapes ID">
+                <input id="wine-bottle-id" class="input100" type="text" placeholder="OliveOil Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Enter valid Price">
+                <input id="wine-bottle-price"class="input100" type="text" placeholder="OliveOil Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+      
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.buyBottle()">
+                  Buy OliveOil Bottle
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                OliveOil Retailer
+              </span>
+
+              <label class="label-input100" for="email">Enter Bottle ID to ship to customer *</label>
+              <div class="wrap-input100 validate-input" data-validate = "Valid Bottle ID is Required">
+                <input id="ship-bottle-id" class="input100" type="text" placeholder="Eg. 1">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.shipBottle()">
+                  Ship OliveOil Bottle
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                Customer
+              </span>
+              
+              <label class="label-input100" for="email">Mark OliveOil Bottle Received *</label>
+              <div class="wrap-input100 validate-input" data-validate = "Valid Bottle ID is Required">
+                <input id="mark-bottle-received" class="input100" type="text" placeholder="Eg. 1">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.receivedBottle()">
+                  OliveOil Bottle Received
+                </button>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="details-contact100-form-btn" id="details-proceed-button"type="submit" style="display: none;">
+                  Proceed
+                </button>
+              </div>
+
+            </form>
+      
+            <div class="contact100-more flex-col-c-m">
+                <form class="details100-form validate-form">
+                    <span class="details100-form-title">
+                      Process Grapes
+                    </span>
+            
+                    <label class="details-label-input100">Enter Grapes Information</label>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                      <input id="grapes-vintage" class="details-input100" type="text" placeholder="Vintage Year">
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100">
+                      <input id="farm-id"class="details-input100" type="text" placeholder="Farm ID">
+                    </div>
+
+                    <label class="details-label-input100">Grapes Notes</label>
+                    <div class="wrap-input100 validate-input">
+                      <textarea id="grapes-notes" class="details-input100" readonly placeholder="Write Grapes Information..."></textarea>
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.harvestGrapes()">
+                        Harvest Grapes
+                      </button>
+                    </div>
+
+                    <label class="details-label-input100">Enter Grapes ID to Press Grapes:</label>
+                    <div class="wrap-input100">
+                      <input id="press-grapes-id" class="details-input100" type="text" placeholder="Eg: 1">  
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.pressGrapes()">
+                        Press Grapes
+                      </button>
+                    </div>
+
+                    <label class="details-label-input100">Enter Grapes ID to Ferment Grapes:</label>
+                    <div class="wrap-input100">
+                      <input id="ferment-grapes-id" class="details-input100" type="text" placeholder="Eg: 1">  
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.fermentGrapes()">
+                        Ferment Grapes
+                      </button>
+                    </div>
+                    
+                    <span class="details100-form-sub-title">
+                      Process OliveOil
+                    </span>
+                    <label class="details-label-input100" for="first-name">Enter Grapes ID & OliveOil Bottle Price *</label>
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Enter valid Grapes ID">
+                      <input id="wine-grapes-id" class="details-input100" type="text" placeholder="Grapes ID">
+                      <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Enter valid Price">
+                      <input id="wine-bottle-price"class="details-input100" type="text" placeholder="OliveOil Bottle Price">
+                      <span class="focus-input100"></span>
+                    </div>
+      
+                    <label class="details-label-input100" for="message">Enter OliveOil Notes *</label>
+                    <div class="wrap-input100 validate-input" data-validate = "OliveOil Notes is required">
+                      <textarea id="wine-notes" class="details-input100" placeholder="Write OliveOil Notes..."></textarea>
+                      <span class="focus-input100"></span>
+                    </div>
+      
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.processWine()">
+                        Process OliveOil
+                      </button>
+                    </div>
+                  </form>
+        </div>
+      </body>
+</html>
