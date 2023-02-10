@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Olives Supply Chain</title>
+        <title>Wine Supply Chain</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		        <link rel="stylesheet" href="styles/main.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <script src="./app.js"></script>
-		        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="animation/animate.css">
-
       </head>
       <body>
         <div class="container-contact100">
           <div class="wrap-contact100">
             <form class="contact100-form validate-form">
               <span class="contact100-form-title">
-                Register Producer & Olive Grove
+                Register Producer & Vineyard
               </span>
 
-              <label class="label-input100">Enter Olive Grove ID *</label>
+              <label class="label-input100">Enter Farm ID *</label>
               <div class="wrap-input100">
                 <input id="farm-farm-id" class="input100" type="text" placeholder="Eg. 123">
                 <span class="focus-input100"></span>
               </div>
       
-              <label class="label-input100">Enter Olive Grove Location Co-ordinates *</label>
+              <label class="label-input100">Enter Vineyard Location Co-ordinates *</label>
               <div class="wrap-input100 rs1-wrap-input100">
-                <input id="farm-vineyard-latitude" class="input100" type="text" placeholder="Olive Grove Latitude">
+                <input id="farm-vineyard-latitude" class="input100" type="text" placeholder="Vineyard Latitude">
                 <span class="focus-input100"></span>
               </div>
               <div class="wrap-input100 rs2-wrap-input100">
-                <input id="farm-vineyard-longitude"class="input100" type="text" placeholder="Olive Grove Longitude">
+                <input id="farm-vineyard-longitude"class="input100" type="text" placeholder="Vineyard Longitude">
                 <span class="focus-input100"></span>
               </div>
 
-              <label class="label-input100">Enter Olive Grove Name *</label>
+              <label class="label-input100">Enter Vineyard Name *</label>
               <div class="wrap-input100">
-                <input id="farm-vineyard-name" class="input100" type="text" placeholder="Eg. Great Olive Grove">
+                <input id="farm-vineyard-name" class="input100" type="text" placeholder="Eg. Great Vineyard">
                 <span class="focus-input100"></span>
               </div>
       
-              <label class="label-input100">Enter Olive Grove Address *</label>
+              <label class="label-input100">Enter Vineyard Address *</label>
               <div class="wrap-input100">
-                <textarea id="farm-vineyard-address" class="input100" placeholder="Write Olive Grove Address..."></textarea>
+                <textarea id="farm-vineyard-address" class="input100" placeholder="Write Vineyard Address..."></textarea>
                 <span class="focus-input100"></span>
               </div>
       
@@ -66,25 +64,25 @@
                       <input id="details-producer-id" class="details-input100" type="text" readonly placeholder="Registered Address will appear here">  
                     </div>
             
-                    <label class="details-label-input100">Olive Grove Location Co-ordinates</label>
+                    <label class="details-label-input100">Vineyard Location Co-ordinates</label>
                     <div class="wrap-input100 rs1-wrap-input100">
-                      <input id="details-vineyard-latitude" class="details-input100" type="text" readonly placeholder="Olive Grove Latitude">
+                      <input id="details-vineyard-latitude" class="details-input100" type="text" readonly placeholder="Vineyard Latitude">
                     </div>
                     <div class="wrap-input100 rs2-wrap-input100">
-                      <input id="details-vineyard-longitude"class="details-input100" type="text" readonly placeholder="Olive Grove Longitude">
+                      <input id="details-vineyard-longitude"class="details-input100" type="text" readonly placeholder="Vineyard Longitude">
                     </div>
 
-                    <label class="details-label-input100">Olive Grove Information</label>
+                    <label class="details-label-input100">Vineyard Information</label>
                     <div class="wrap-input100 rs1-wrap-input100">
-                      <input id="details-vineyard-id" class="details-input100" type="text" readonly placeholder="Olive Grove ID">
+                      <input id="details-vineyard-id" class="details-input100" type="text" readonly placeholder="Vineyard ID">
                     </div>
                     <div class="wrap-input100 rs2-wrap-input100">
-                      <input id="details-vineyard-name"class="details-input100" type="text" readonly placeholder="Olive Grove Name">
+                      <input id="details-vineyard-name"class="details-input100" type="text" readonly placeholder="Vineyard Name">
                     </div>
             
-                    <label class="details-label-input100">Olive Grove Address</label>
+                    <label class="details-label-input100">Vineyard Address</label>
                     <div class="wrap-input100 validate-input">
-                      <textarea id="details-vineyard-address" class="details-input100" readonly placeholder="Olive Grove Address"></textarea>
+                      <textarea id="details-vineyard-address" class="details-input100" readonly placeholder="Vineyard Address"></textarea>
                     </div>
 
                     <div class="container-contact100-form-btn">
@@ -101,16 +99,16 @@
             <form class="contact100-form validate-form">
 
               <span class="contact100-form-sub-title">
-                Jar of Olives  Distributor
+                Wine Distributor
               </span>
 
-              <label class="label-input100">Enter Jar of Olives Bottle ID & Price for Distribution*</label>
+              <label class="label-input100">Enter Wine Bottle ID & Price for Distribution*</label>
               <div class="wrap-input100 rs1-wrap-input100">
-                <input id="process-dist-bottle-id" class="input100" type="text" placeholder="Jar of Olives Bottle ID">
+                <input id="process-dist-bottle-id" class="input100" type="text" placeholder="Wine Bottle ID">
                 <span class="focus-input100"></span>
               </div>
               <div class="wrap-input100 rs2-wrap-input100">
-                <input id="process-dist-bottle-price"class="input100" type="text" placeholder="Jar of Olives Bottle Price">
+                <input id="process-dist-bottle-price"class="input100" type="text" placeholder="Wine Bottle Price">
                 <span class="focus-input100"></span>
               </div>
 
@@ -121,16 +119,16 @@
               </div>
 
               <span class="contact100-form-sub-title">
-                Olives Retailer
+                Wine Retailer
               </span>
 
-              <label class="label-input100">Enter Jar of Olives Bottle ID & Price for Retail*</label>
+              <label class="label-input100">Enter Wine Bottle ID & Price For Retail*</label>
               <div class="wrap-input100 rs1-wrap-input100">
-                <input id="process-ret-bottle-id" class="input100" type="text" placeholder="Jar of Olives  Bottle ID">
+                <input id="process-ret-bottle-id" class="input100" type="text" placeholder="Wine Bottle ID">
                 <span class="focus-input100"></span>
               </div>
               <div class="wrap-input100 rs2-wrap-input100">
-                <input id="process-ret-bottle-price"class="input100" type="text" placeholder="Jar of Olives Bottle Price">
+                <input id="process-ret-bottle-price"class="input100" type="text" placeholder="Wine Bottle Price">
                 <span class="focus-input100"></span>
               </div>
 
@@ -140,7 +138,7 @@
                 </button>
               </div>
 
-              <label class="label-input100">Enter Jar of Olives Bottle ID & Price For Sale*</label>
+              <label class="label-input100">Enter Wine Bottle ID & Price For Sale*</label>
               <div class="wrap-input100 rs1-wrap-input100">
                 <input id="retail-sale-bottle-id" class="input100" type="text" placeholder="Wine Bottle ID">
                 <span class="focus-input100"></span>
@@ -180,7 +178,7 @@
                 Wine Retailer
               </span>
 
-              <label class="label-input100">Enter Jar of Olives Bottle ID to ship to customer *</label>
+              <label class="label-input100">Enter Bottle ID to ship to customer *</label>
               <div class="wrap-input100">
                 <input id="process-ship-bottle-id" class="input100" type="text" placeholder="Eg. 1">
                 <span class="focus-input100"></span>
@@ -188,7 +186,7 @@
 
               <div class="container-contact100-form-btn">
                 <button class="contact100-form-btn" type="button" onclick="App.shipBottle()">
-                  Ship Jar of Olives Bottle
+                  Ship Wine Bottle
                 </button>
               </div>
 
@@ -196,7 +194,7 @@
                 Customer
               </span>
               
-              <label class="label-input100">Mark Jar of Olives Bottle Received *</label>
+              <label class="label-input100">Mark Wine Bottle Received *</label>
               <div class="wrap-input100">
                 <input id="process-mark-bottle-received" class="input100" type="text" placeholder="Eg. 1">
                 <span class="focus-input100"></span>
@@ -204,7 +202,7 @@
 
               <div class="container-contact100-form-btn">
                 <button class="contact100-form-btn" type="button" onclick="App.receivedBottle()">
-                  Jar of Olives Bottle Received
+                  Wine Bottle Received
                 </button>
               </div>
 
@@ -236,30 +234,30 @@
                     </div>
 
                     <div class="container-contact100-form-btn">
-                      <button class="details-contact100-form-btn" type="button" onclick="App.harvestOlives()">
-                        Harvest Olives
+                      <button class="details-contact100-form-btn" type="button" onclick="App.harvestGrapes()">
+                        Harvest Grapes
                       </button>
                     </div>
 
-                    <label class="details-label-input100">Enter Olives ID to Sort Olives:</label>
+                    <label class="details-label-input100">Enter Grapes ID to Press Grapes:</label>
                     <div class="wrap-input100">
                       <input id="process-press-grapes-id" class="details-input100" type="text" placeholder="Eg: 1">  
                     </div>
 
                     <div class="container-contact100-form-btn">
-                      <button class="details-contact100-form-btn" type="button" onclick="App.transferOlives()">
-                        Sort Olives
+                      <button class="details-contact100-form-btn" type="button" onclick="App.pressGrapes()">
+                        Press Grapes
                       </button>
                     </div>
 
-                    <label class="details-label-input100">Enter Olives ID to Ferment Olives:</label>
+                    <label class="details-label-input100">Enter Grapes ID to Ferment Grapes:</label>
                     <div class="wrap-input100">
                       <input id="process-ferment-grapes-id" class="details-input100" type="text" placeholder="Eg: 1">  
                     </div>
 
                     <div class="container-contact100-form-btn">
                       <button class="details-contact100-form-btn" type="button" onclick="App.fermentGrapes()">
-                        Ferment Olives
+                        Ferment Grapes
                       </button>
                     </div>
                     
@@ -290,7 +288,7 @@
                     </div>
       
                     <div class="container-contact100-form-btn">
-                      <button class="details-contact100-form-btn" type="button" onclick="App.bottlingOlives()">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.processWine()">
                         Process Wine
                       </button>
                     </div>
@@ -312,7 +310,7 @@
                 </div>
   
                 <div class="container-contact100-form-btn">
-                  <button class="contact100-form-btn" type="button" onclick="App.getOlivesJarInfo()">
+                  <button class="contact100-form-btn" type="button" onclick="App.getWineInfo()">
                     Get Information
                   </button>
                 </div>
@@ -362,7 +360,7 @@
                       </div>
   
                       <div class="container-contact100-form-btn">
-                        <button class="details-contact100-form-btn" type="button" onclick="App.getGrapesInfo()" >
+                        <button class="details-contact100-form-btn" type="button" onclick="App.getOlivesInfo()" >
                           Get Information
                         </button>
                       </div>

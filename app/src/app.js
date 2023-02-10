@@ -73,7 +73,7 @@ const App = {
         const farmId = document.getElementById('process-farm-id').value;
         const grapesNotes = document.getElementById('process-grapes-notes').value;
   
-        await supplyChain.harvestGrapes(grapesId, grapesNotes, vintageYear, farmId, {from: account});
+        await supplyChain.harvestOlives(grapesId, grapesNotes, vintageYear, farmId, {from: account});
   
         let harvestEvent = await supplyChain.GrapesHarvested()
   
@@ -86,13 +86,13 @@ const App = {
         })
       },
   
-      pressGrapes : async () => {
+      transferOlives : async () => {
   
         const supplyChain = await SupplyChain.deployed();
   
         const grapesId = document.getElementById('process-press-grapes-id').value;
   
-        await supplyChain.pressGrapes(grapesId, {from: account});
+        await supplyChain.transferOlives(grapesId, {from: account});
   
         let pressEvent = await supplyChain.GrapesPressed();
   
@@ -111,7 +111,7 @@ const App = {
   
         const grapesId = document.getElementById('process-ferment-grapes-id').value;
   
-        await supplyChain.fermentGrapes(grapesId, {from: account});
+        await supplyChain.preserve(grapesId, {from: account});//call contract
   
         let fermentationEvent =  await supplyChain.GrapesFermented();
   
@@ -124,7 +124,7 @@ const App = {
         });
       },
   
-      processWine : async () => {
+      bottlingOlives : async () => {
   
         const supplyChain = await SupplyChain.deployed();
         
@@ -133,7 +133,7 @@ const App = {
         const price = document.getElementById('process-wine-bottle-price').value;
         const notes = document.getElementById('process-wine-notes').value;
   
-        await supplyChain.bottlingWine(bottleId, grapesId, price, notes, {from: account});
+        await supplyChain.bottlingOlives(bottleId, grapesId, price, notes, {from: account});
   
         let processEvent = await supplyChain.WineBottled();
   
@@ -279,7 +279,7 @@ const App = {
         })
       },
 
-      getOlivesInfo : async () => {
+      getFarmInfo : async () => {
 
         const supplyChain = await SupplyChain.deployed();
 
@@ -298,7 +298,7 @@ const App = {
         document.getElementById('results-farm-address').value = resultGrapes[8];
       },
 
-      getWineInfo : async () => {
+      getOlivesJarInfo : async () => {
 
         const supplyChain = await SupplyChain.deployed();
 
@@ -332,13 +332,13 @@ window.addEventListener('load', async() => {
       window.web3 = new Web3(web3.currentProvider);
   } else {
     console.warn(
-      'No web3 detected. Falling back to http://127.0.0.1:9545.' +
+      'No web3 detected. Falling back to http://127.0.0.1:8545.' +
       ' You should remove this fallback when you deploy live, as it\'s inherently insecure.' +
       ' Consider switching to Metamask for development.' +
       ' More info here: http://truffleframework.com/tutorials/truffle-and-metamask'
     )
     // https://rinkeby.infura.io/v3/d530853c676f4b0e9c0b97d4fdfc8324
-    window.web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:7545'))
+    window.web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'))
   }
 
   App.start()
