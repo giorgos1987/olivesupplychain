@@ -1,6 +1,6 @@
 # Olive Supply Chain - Ethereum Blockchain Project
 
-Wine Supply Chain management and process tracking on Ethereum Blockchain. Project provides transaparency of every process of wine production right from grapes to bottle delivered to delivered to the customer. The project contains a minimum of 4 different actors (to allow for an intermediary aside from buyer and seller) and 10 different states (harvested, bottled, shipped, for sale received).
+Olive Supply Chain management and process tracking on Ethereum Blockchain. Project provides transaparency of every process of wine production right from grapes to bottle delivered to delivered to the customer. The project contains a minimum of 4 different actors (to allow for an intermediary aside from buyer and seller) and 10 different states (harvested, bottled, shipped, for sale received).
 
 
 # Implementations in this project.
@@ -16,15 +16,15 @@ Add Smart Contract Functions:
 AccessControl Contracts:
 
 - Producer: The Producer can harvest grapes, process vinification, sell to distributor and track authenticity.
-- Distributor: The Distributor can buy & distribute wine bottle and track authenticity.
-- Retailer: The Retailer can buy & put wine bottles for sale and track authenticity.
-- Consumer: The consumer can buy wine bottle and track authenticity.
+- Distributor: The Distributor can buy & distribute olive jar and track authenticity.
+- Retailer: The Retailer can buy & put olive bottles for sale and track authenticity.
+- Consumer: The consumer can buy olive bottle and track authenticity.
 
 Base Contract - This smart contract must implement functions that track:
 
 - Farm Information - Vineyard ID | Vineyard Name | Vineyard Longitude | Vineyard Latitude | Vineyard Address
 - Grapes Information - Grapes ID | Grapes State | Grapes Description | Vintage Year | Vineyard Owner | Farm
-- Wine Bottle Information - Wine ID | Grapes ID | Wine Price | Wine State | Wine Owners | Wine Description
+- Olive Bottle Information - Olive ID | Grapes ID | Olive Price | Olive State | Olive Owners | Olive Description
 
 Core Contract
 
@@ -53,7 +53,7 @@ Notary Blockchain requires [Node.js](https://nodejs.org/) v4+ to run.
 Install the dependencies and start the server.
 
 ```sh
-$ cd WineSupplyChain
+$ cd OliveSupplyChain
 $ npm run build
 $ npm run start
 ```
@@ -66,7 +66,7 @@ Ensure to add custom RPC to Metamask at ```http://127.0.0.1:9545``` to connect w
 For running tests: 
 
 ```sh
-$ cd WineSupplyChain
+$ cd OliveSupplyChain
 $ truffle migrate --reset --development (Make sure you have installed ganache-cli)
 $ truffle test
 ```
