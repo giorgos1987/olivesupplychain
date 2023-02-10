@@ -105,17 +105,17 @@ const App = {
         })
       },
   
-      fermentGrapes : async () => {
+      preservGrapes : async () => {
   
         const supplyChain = await SupplyChain.deployed();
   
-        const grapesId = document.getElementById('process-ferment-grapes-id').value;
+        const grapesId = document.getElementById('process-preserv-grapes-id').value;
   
         await supplyChain.preserve(grapesId, {from: account});//call contract
   
-        let fermentationEvent =  await supplyChain.GrapesFermented();
+        let preservationEvent =  await supplyChain.GrapesPreserved();
   
-        fermentationEvent.watch(function(error, result) {
+        preservationEvent.watch(function(error, result) {
           if (!error) {
             console.log(result.args.grapesId);
           } else {
@@ -129,13 +129,13 @@ const App = {
         const supplyChain = await SupplyChain.deployed();
         
         const bottleId = document.getElementById('process-bottle-id').value;
-        const grapesId = document.getElementById('process-wine-grapes-id').value;
-        const price = document.getElementById('process-wine-bottle-price').value;
-        const notes = document.getElementById('process-wine-notes').value;
+        const grapesId = document.getElementById('process-olive-grapes-id').value;
+        const price = document.getElementById('process-olive-bottle-price').value;
+        const notes = document.getElementById('process-olive-notes').value;
   
         await supplyChain.bottlingOlives(bottleId, grapesId, price, notes, {from: account});
   
-        let processEvent = await supplyChain.WineBottled();
+        let processEvent = await supplyChain.OliveBottled();
   
         processEvent.watch(function(error, result) {
           if (!error) {
@@ -160,7 +160,7 @@ const App = {
   
         await supplyChain.bottleForDistributionSale(bottleId, bottlePrice, {from: account, value: web3.toWei(bottlePrice)});
         
-        let distributionEvent =  await supplyChain.WineBottleForDistributionSold();
+        let distributionEvent =  await supplyChain.OliveBottleForDistributionSold();
   
         distributionEvent.watch(function(error, result) {
           if (!error) {
@@ -185,7 +185,7 @@ const App = {
   
         await supplyChain.bottleShipForRetail(bottleId, bottlePrice, {from: account, value: web3.toWei(bottlePrice)});
   
-        let retailEvent = await supplyChain.WineBottleRetailReceived();
+        let retailEvent = await supplyChain.OliveBottleRetailReceived();
   
         retailEvent.watch(function(error, result) {
           if (!error) {
@@ -205,7 +205,7 @@ const App = {
   
         await supplyChain.bottleForSale(bottleId, bottlePrice, {from: account});
   
-        let saleEvent = await supplyChain.WineBottleForSale();
+        let saleEvent = await supplyChain.OliveBottleForSale();
   
         saleEvent.watch(function(error, result) {
           if (!error) {
@@ -225,12 +225,12 @@ const App = {
           await supplyChain.addCustomer(account, {from: deployer});
         }
   
-        const bottleId = document.getElementById('customer-wine-bottle-id').value;
-        const bottlePrice = document.getElementById('customer-wine-bottle-price').value;
+        const bottleId = document.getElementById('customer-olive-bottle-id').value;
+        const bottlePrice = document.getElementById('customer-olive-bottle-price').value;
   
         await supplyChain.buyBottle(bottleId, bottlePrice, {from: account, value: web3.toWei(bottlePrice)});
   
-        let buyEvent = await supplyChain.WineBottleSold();
+        let buyEvent = await supplyChain.OliveBottleSold();
   
         buyEvent.watch(function(error, result) {
           if (!error) {
@@ -249,7 +249,7 @@ const App = {
         
         await supplyChain.shipBottle(bottleId, {from: account});
   
-        let shipEvent = await supplyChain.WineBottleShipped();
+        let shipEvent = await supplyChain.OliveBottleShipped();
   
         shipEvent.watch(function(error, result) {
           if (!error) {
@@ -268,7 +268,7 @@ const App = {
   
         await supplyChain.BottleReceived(bottleId, {from: account});
   
-        let receivedEvent = await supplyChain.WineBottleReceived();
+        let receivedEvent = await supplyChain.OliveBottleReceived();
   
         receivedEvent.watch(function(error, result) {
           if (!error) {
@@ -302,17 +302,17 @@ const App = {
 
         const supplyChain = await SupplyChain.deployed();
 
-        const wineId = document.getElementById('results-wine-info-id').value;
+        const oliveId = document.getElementById('results-olive-info-id').value;
 
-        const resultWine = await supplyChain.getBottleInfo(wineId);
+        const resultOlive = await supplyChain.getBottleInfo(oliveId);
 
-        document.getElementById('results-wine-bottle-id').value = resultWine[0];
-        document.getElementById('results-wine-bottle-price').value = resultWine[1];
-        document.getElementById('results-bottle-owner').value = resultWine[2];
-        document.getElementById('results-bottle-buyer').value = resultWine[3];
-        document.getElementById('results-wine-bottle-state').value = resultWine[4];
-        document.getElementById('results-bottle-grapes-id').value = resultWine[5];
-        document.getElementById('results-wine-notes').value = resultWine[6];
+        document.getElementById('results-olive-bottle-id').value = resultOlive[0];
+        document.getElementById('results-olive-bottle-price').value = resultOlive[1];
+        document.getElementById('results-bottle-owner').value = resultOlive[2];
+        document.getElementById('results-bottle-buyer').value = resultOlive[3];
+        document.getElementById('results-olive-bottle-state').value = resultOlive[4];
+        document.getElementById('results-bottle-grapes-id').value = resultOlive[5];
+        document.getElementById('results-olive-notes').value = resultOlive[6];
       }
 }
 

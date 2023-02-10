@@ -29,7 +29,7 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
     mapping (uint => Location) farmLocation;
     event FarmRegistered(uint farmId);
 
-    enum GrapeState {Harvested, Pressed, Fermented}
+    enum GrapeState {Harvested, Pressed, Preserved}
 
     struct Grapes {
         uint grapesId;
@@ -43,28 +43,28 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
     mapping (uint => Grapes) grapes;
     event GrapesHarvested(uint grapesId);
     event GrapesPressed(uint grapesId);
-    event GrapesFermented(uint grapesId);
+    event GrapesPreserved(uint grapesId);
 
     enum BottleState {Bottled, ForDistributionSold, ShippedRetail, ForSale,  Sold, Shipped, Received, Consumed}
 
-    struct WineBottle {
+    struct OliveBottle {
         uint sku;
         Grapes grapes;
         uint price;
         BottleState bottleState;
         address buyer;
         address bottleOwner;
-        string wineNotes;
+        string oliveNotes;
     }
 
-    mapping (uint => WineBottle) bottles;
-    event WineBottled(uint sku);
-    event WineBottleForDistributionSold(uint sku);
-    event WineBottleShippedRetail(uint sku);
-    event WineBottleForSale(uint sku);
-    event WineBottleSold(uint sku);
-    event WineBottleShipped(uint sku);
-    event WineBottleReceived(uint sku);
+    mapping (uint => OliveBottle) bottles;
+    event OliveBottled(uint sku);
+    event OliveBottleForDistributionSold(uint sku);
+    event OliveBottleShippedRetail(uint sku);
+    event OliveBottleForSale(uint sku);
+    event OliveBottleSold(uint sku);
+    event OliveBottleShipped(uint sku);
+    event OliveBottleReceived(uint sku);
 
     modifier verifyCaller(address _address) {
         require(msg.sender == _address, "Caller cannot be verified!");
@@ -81,7 +81,7 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         _;
     }
 
-    modifier wineBottleExists(uint sku) {
+    modifier oliveBottleExists(uint sku) {
         require(bottles[sku].sku > 0, "OliveOil Bottle doesn't exist!");
         _;
     }
@@ -166,15 +166,15 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         emit GrapesPressed(grapeId);
     }
 
-    function fermentGrapes(uint grapeId) public 
+    function preservGrapes(uint grapeId) public 
     grapesExists(grapeId) 
     verifyGrapesState(grapeId, GrapeState.Pressed) 
     verifyCaller(grapes[grapeId].farmOwner)
     onlyProducer {
 
-        grapes[grapeId].state = GrapeState.Fermented;
+        grapes[grapeId].state = GrapeState.Preserved;
         
-        emit GrapesFermented(grapeId);
+        emit GrapesPreserved(grapeId);
     }
 
     function getGrapesInfo(uint grapeId) public view
@@ -198,7 +198,7 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
             state = "Grapes Pressed";
         } 
         if (uint(grapes[grapeId].state) == 2) {
-            state = "Grapes Fermented";
+            state = "Grapes Preserved";
         }
         farmId = grapes[grapeId].farm.farmId;
         farmName = grapes[grapeId].farm.farmName;
@@ -207,26 +207,26 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         farmLocationAddress = grapes[grapeId].farm.location.locationAddress;
     }
 
-    function bottlingWine(uint bottleId, uint grapeId, uint _price, string notes) public
+    function bottlingOlive(uint bottleId, uint grapeId, uint _price, string notes) public
     grapesExists(grapeId)
-    verifyGrapesState(grapeId, GrapeState.Fermented)
+    verifyGrapesState(grapeId, GrapeState.Preserved)
     verifyCaller(grapes[grapeId].farmOwner)
     onlyProducer {
 
-        WineBottle storage newBottle = bottles[bottleId];
+        OliveBottle storage newBottle = bottles[bottleId];
         newBottle.sku = bottleId;
         newBottle.grapes = grapes[grapeId];
         newBottle.price = _price;
         newBottle.bottleState = BottleState.Bottled;
         newBottle.buyer = emptyAddress;
         newBottle.bottleOwner = msg.sender;
-        newBottle.wineNotes = notes;
+        newBottle.oliveNotes = notes;
 
-        emit WineBottled(bottles[bottleId].sku);
+        emit OliveBottled(bottles[bottleId].sku);
     }
 
     function bottleForDistributionSale(uint sku, uint _price) public payable
-    wineBottleExists(sku)
+    oliveBottleExists(sku)
     verifyBottleState(sku, BottleState.Bottled)
     isPaidEnough(_price)
     returnExcessChange(sku)
@@ -239,11 +239,11 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         bottles[sku].bottleOwner = distributor;
         bottles[sku].bottleState = BottleState.ForDistributionSold;
 
-        emit WineBottleForDistributionSold(sku);
+        emit OliveBottleForDistributionSold(sku);
     }
 
     function bottleShipForRetail(uint sku, uint _price) public payable
-    wineBottleExists(sku)
+    oliveBottleExists(sku)
     verifyBottleState(sku, BottleState.ForDistributionSold)
     isPaidEnough(_price)
     returnExcessChange(sku)
@@ -258,7 +258,7 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
     }
 
     function bottleForSale(uint sku, uint price) public
-    wineBottleExists(sku)
+    oliveBottleExists(sku)
     verifyBottleState(sku, BottleState.ShippedRetail)
     verifyCaller(bottles[sku].bottleOwner)
     onlyRetailer {
@@ -266,11 +266,11 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         bottles[sku].price = price;
         bottles[sku].bottleState = BottleState.ForSale;
         
-        emit WineBottleForSale(sku);
+        emit OliveBottleForSale(sku);
     }
 
     function buyBottle(uint sku) public payable
-    wineBottleExists(sku)
+    oliveBottleExists(sku)
     verifyBottleState(sku, BottleState.ForSale)
     isPaidEnough(bottles[sku].price)
     returnExcessChange(sku)
@@ -280,22 +280,22 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         bottles[sku].bottleState = BottleState.Sold;
         bottles[sku].bottleOwner.transfer(bottles[sku].price);
 
-        emit WineBottleSold(sku);
+        emit OliveBottleSold(sku);
     }
 
     function shipBottle(uint sku) public
-    wineBottleExists(sku)
+    oliveBottleExists(sku)
     verifyBottleState(sku, BottleState.Sold)
     verifyCaller(bottles[sku].bottleOwner)
     onlyRetailer {
 
         bottles[sku].bottleState = BottleState.Shipped;
 
-        emit WineBottleShipped(sku);
+        emit OliveBottleShipped(sku);
     }
 
     function BottleReceived(uint sku) public
-    wineBottleExists(sku)
+    oliveBottleExists(sku)
     verifyBottleState(sku, BottleState.Shipped)
     verifyCaller(bottles[sku].buyer)
     onlyCustomer {
@@ -304,11 +304,11 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         bottles[sku].buyer = emptyAddress;
         bottles[sku].bottleState = BottleState.Received;
 
-        emit WineBottleReceived(sku);
+        emit OliveBottleReceived(sku);
     }
 
     function getBottleInfo(uint _sku) public view 
-    wineBottleExists(_sku)
+    oliveBottleExists(_sku)
     returns (uint sku, uint price, address owner, address buyer, string state, uint grapeId, string notes) {
         sku = _sku;
         price = bottles[_sku].price;
@@ -338,7 +338,7 @@ contract SupplyChain is ProducerRole, DistributorRole, RetailerRole, CustomerRol
         }
 
         grapeId = bottles[_sku].grapes.grapesId;
-        notes = bottles[_sku].wineNotes;
+        notes = bottles[_sku].oliveNotes;
         
     }
 

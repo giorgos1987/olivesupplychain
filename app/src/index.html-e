@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Olives Supply Chain</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <script src="./app.js"></script>
+		        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="animation/animate.css">
+
+      </head>
+      <body>
+        <div class="container-contact100">
+          <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+              <span class="contact100-form-title">
+                Register Producer & Olive Grove
+              </span>
+
+              <label class="label-input100">Enter Olive Grove ID *</label>
+              <div class="wrap-input100">
+                <input id="farm-farm-id" class="input100" type="text" placeholder="Eg. 123">
+                <span class="focus-input100"></span>
+              </div>
+      
+              <label class="label-input100">Enter Olive Grove Location Co-ordinates *</label>
+              <div class="wrap-input100 rs1-wrap-input100">
+                <input id="farm-vineyard-latitude" class="input100" type="text" placeholder="Olive Grove Latitude">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100">
+                <input id="farm-vineyard-longitude"class="input100" type="text" placeholder="Olive Grove Longitude">
+                <span class="focus-input100"></span>
+              </div>
+
+              <label class="label-input100">Enter Olive Grove Name *</label>
+              <div class="wrap-input100">
+                <input id="farm-vineyard-name" class="input100" type="text" placeholder="Eg. Great Olive Grove">
+                <span class="focus-input100"></span>
+              </div>
+      
+              <label class="label-input100">Enter Olive Grove Address *</label>
+              <div class="wrap-input100">
+                <textarea id="farm-vineyard-address" class="input100" placeholder="Write Olive Grove Address..."></textarea>
+                <span class="focus-input100"></span>
+              </div>
+      
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" id="register-btn" type="button" onclick="App.registerFarm()">
+                  Register
+                </button>
+              </div>
+            </form>
+      
+            <div class="contact100-more flex-col-c-m">
+                <form class="details100-form validate-form"
+                      >
+                    <span class="details100-form-title">
+                      Registration Details
+                    </span>
+      
+                    <label class="details-label-input100">Producer ID:</label>
+                    <div class="wrap-input100">
+                      <input id="details-producer-id" class="details-input100" type="text" readonly placeholder="Registered Address will appear here">  
+                    </div>
+            
+                    <label class="details-label-input100">Olive Grove Location Co-ordinates</label>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                      <input id="details-vineyard-latitude" class="details-input100" type="text" readonly placeholder="Olive Grove Latitude">
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100">
+                      <input id="details-vineyard-longitude"class="details-input100" type="text" readonly placeholder="Olive Grove Longitude">
+                    </div>
+
+                    <label class="details-label-input100">Olive Grove Information</label>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                      <input id="details-vineyard-id" class="details-input100" type="text" readonly placeholder="Olive Grove ID">
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100">
+                      <input id="details-vineyard-name"class="details-input100" type="text" readonly placeholder="Olive Grove Name">
+                    </div>
+            
+                    <label class="details-label-input100">Olive Grove Address</label>
+                    <div class="wrap-input100 validate-input">
+                      <textarea id="details-vineyard-address" class="details-input100" readonly placeholder="Olive Grove Address"></textarea>
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" id="details-proceed-button"type="submit" style="display: none;">
+                        Proceed
+                      </button>
+                    </div>
+
+                  </form>
+        </div>
+
+        <div class="container-contact100">
+          <div class="wrap-contact100">
+            <form class="contact100-form validate-form">
+
+              <span class="contact100-form-sub-title">
+                Jar of Olives  Distributor
+              </span>
+
+              <label class="label-input100">Enter Jar of Olives Bottle ID & Price for Distribution*</label>
+              <div class="wrap-input100 rs1-wrap-input100">
+                <input id="process-dist-bottle-id" class="input100" type="text" placeholder="Jar of Olives Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100">
+                <input id="process-dist-bottle-price"class="input100" type="text" placeholder="Jar of Olives Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.buyBottleForDistribution()">
+                  Purchase
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                Olives Retailer
+              </span>
+
+              <label class="label-input100">Enter Jar of Olives Bottle ID & Price for Retail*</label>
+              <div class="wrap-input100 rs1-wrap-input100">
+                <input id="process-ret-bottle-id" class="input100" type="text" placeholder="Jar of Olives  Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100">
+                <input id="process-ret-bottle-price"class="input100" type="text" placeholder="Jar of Olives Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.buyBottleForRetail()">
+                  Purchase
+                </button>
+              </div>
+
+              <label class="label-input100">Enter Jar of Olives Bottle ID & Price For Sale*</label>
+              <div class="wrap-input100 rs1-wrap-input100">
+                <input id="retail-sale-bottle-id" class="input100" type="text" placeholder="Olive Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100">
+                <input id="retail-sale-bottle-price"class="input100" type="text" placeholder="Olive Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.bottleForSale()">
+                  For Sale
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                Customer
+              </span>
+
+              <label class="label-input100">Enter Olive Bottle ID & Price *</label>
+              <div class="wrap-input100 rs1-wrap-input100">
+                <input id="customer-olive-bottle-id" class="input100" type="text" placeholder="Olive Bottle ID">
+                <span class="focus-input100"></span>
+              </div>
+              <div class="wrap-input100 rs2-wrap-input100">
+                <input id="customer-olive-bottle-price"class="input100" type="text" placeholder="Olive Bottle Price">
+                <span class="focus-input100"></span>
+              </div>
+      
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.buyBottle()">
+                  Buy Olive Bottle
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                Olive Retailer
+              </span>
+
+              <label class="label-input100">Enter Jar of Olives Bottle ID to ship to customer *</label>
+              <div class="wrap-input100">
+                <input id="process-ship-bottle-id" class="input100" type="text" placeholder="Eg. 1">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.shipBottle()">
+                  Ship Jar of Olives Bottle
+                </button>
+              </div>
+
+              <span class="contact100-form-sub-title">
+                Customer
+              </span>
+              
+              <label class="label-input100">Mark Jar of Olives Bottle Received *</label>
+              <div class="wrap-input100">
+                <input id="process-mark-bottle-received" class="input100" type="text" placeholder="Eg. 1">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="button" onclick="App.receivedBottle()">
+                  Jar of Olives Bottle Received
+                </button>
+              </div>
+
+            </form>
+      
+            <div class="contact100-more flex-col-c-m">
+                <form class="details100-form validate-form">
+                    <span class="details100-form-title">
+                      Process Grapes
+                    </span>
+                    
+                    <label class="details-label-input100">Enter Grapes ID *</label>
+                    <div class="wrap-input100">
+                      <input id="process-grapes-id" class="details-input100" type="text" placeholder="Eg. 123">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <label class="details-label-input100">Enter Grapes Information</label>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                      <input id="process-grapes-vintage" class="details-input100" type="text" placeholder="Vintage Year">
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100">
+                      <input id="process-farm-id"class="details-input100" type="text" placeholder="Farm ID">
+                    </div>
+
+                    <label class="details-label-input100">Grapes Notes</label>
+                    <div class="wrap-input100">
+                      <textarea id="process-grapes-notes" class="details-input100" placeholder="Write Grapes Information..."></textarea>
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.harvestOlives()">
+                        Harvest Olives
+                      </button>
+                    </div>
+
+                    <label class="details-label-input100">Enter Olives ID to Sort Olives:</label>
+                    <div class="wrap-input100">
+                      <input id="process-press-grapes-id" class="details-input100" type="text" placeholder="Eg: 1">  
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.transferOlives()">
+                        Sort Olives
+                      </button>
+                    </div>
+
+                    <label class="details-label-input100">Enter Olives ID to Preserv Olives:</label>
+                    <div class="wrap-input100">
+                      <input id="process-preserv-grapes-id" class="details-input100" type="text" placeholder="Eg: 1">  
+                    </div>
+
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.preservGrapes()">
+                        Preserv Olives
+                      </button>
+                    </div>
+                    
+                    <span class="details100-form-sub-title">
+                      Process Olive
+                    </span>
+
+                    <label class="details-label-input100">Enter Olive Bottle ID *</label>
+                    <div class="wrap-input100">
+                      <input id="process-bottle-id" class="details-input100" type="text" placeholder="Eg. 123">
+                      <span class="focus-input100"></span>
+                    </div>
+
+                    <label class="details-label-input100">Enter Grapes ID & Olive Bottle Price *</label>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                      <input id="process-olive-grapes-id" class="details-input100" type="text" placeholder="Grapes ID">
+                      <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 rs2-wrap-input100">
+                      <input id="process-olive-bottle-price"class="details-input100" type="text" placeholder="Olive Bottle Price">
+                      <span class="focus-input100"></span>
+                    </div>
+      
+                    <label class="details-label-input100">Enter Olive Notes *</label>
+                    <div class="wrap-input100 validate-input">
+                      <textarea id="process-olive-notes" class="details-input100" placeholder="Write Olive Notes..."></textarea>
+                      <span class="focus-input100"></span>
+                    </div>
+      
+                    <div class="container-contact100-form-btn">
+                      <button class="details-contact100-form-btn" type="button" onclick="App.bottlingOlives()">
+                        Process Olive
+                      </button>
+                    </div>
+                  </form>
+        </div>
+
+        
+          <div class="container-contact100">
+            <div class="wrap-contact100">
+              <form class="contact100-form validate-form">
+                <span class="contact100-form-title">
+                  Olive Information
+                </span>
+  
+                <label class="label-input100" >Enter Olive Bottle ID *</label>
+                <div class="wrap-input100 " data-validate = "Valid Grapes ID">
+                  <input id="results-olive-info-id" class="input100" type="text" placeholder="Eg. 1">
+                  <span class="focus-input100"></span>
+                </div>
+  
+                <div class="container-contact100-form-btn">
+                  <button class="contact100-form-btn" type="button" onclick="App.getOlivesJarInfo()">
+                    Get Information
+                  </button>
+                </div>
+        
+                <label class="label-input100">Olive Bottle ID & Price Saved on Blockchain</label>
+                <div class="wrap-input100 rs1-wrap-input100">
+                  <input id="results-olive-bottle-id" class="input100" type="text" readonly placeholder="Bottle ID">
+                </div>
+                <div class="wrap-input100 rs2-wrap-input100">
+                  <input id="results-olive-bottle-price"class="input100" type="text" readonly placeholder="Olive Bottle Price">
+                </div>
+  
+                <label class="label-input100">Olive Bottle Owner</label>
+                <div class="wrap-input100">
+                  <input id="results-bottle-owner" class="input100" type="text" readonly placeholder="0x00000000000000000000000000000000000000">
+                </div>
+  
+                <label class="label-input100">Olive Bottle Buyer</label>
+                <div class="wrap-input100">
+                  <input id="results-bottle-buyer" class="input100" type="text" readonly placeholder="0x00000000000000000000000000000000000000">
+                </div>
+  
+                <label class="label-input100">Olive Bottle State & Grapes ID Saved on Blockchain</label>
+                <div class="wrap-input100 rs1-wrap-input100">
+                  <input id="results-olive-bottle-state" class="input100" type="text" readonly placeholder="Bottle State">
+                </div>
+                <div class="wrap-input100 rs2-wrap-input100">
+                  <input id="results-bottle-grapes-id"class="input100" type="text" readonly placeholder="Grapes ID">
+                </div>
+        
+                <label class="label-input100">Olive Information</label>
+                <div class="wrap-input100">
+                  <textarea id="results-olive-notes" class="input100" readonly placeholder="Olive Information..."></textarea>
+                </div>
+        
+              </form>
+        
+              <div class="contact100-more flex-col-c-m">
+                  <form class="details100-form validate-form">
+                      <span class="details100-form-title">
+                        Grapes Information
+                      </span>
+        
+                      <label class="details-label-input100">Enter Grapes ID</label>
+                      <div class="wrap-input100">
+                        <input id="results-grapes-info-id" class="details-input100" type="text" placeholder="Eg: 1">  
+                      </div>
+  
+                      <div class="container-contact100-form-btn">
+                        <button class="details-contact100-form-btn" type="button" onclick="App.getGrapesInfo()" >
+                          Get Information
+                        </button>
+                      </div>
+              
+                      <label class="details-label-input100">Grapes ID & Vintage Year saved on Blockchain</label>
+                      <div class="wrap-input100 rs1-wrap-input100">
+                        <input id="results-grapes-information-id" class="details-input100" type="text" readonly placeholder="Grapes ID">
+                      </div>
+                      <div class="wrap-input100 rs2-wrap-input100">
+                        <input id="results-grapes-info-vintage"class="details-input100" type="text" readonly placeholder="Vintage Year">
+                      </div>
+  
+                      <label class="details-label-input100">Grapes State & Farm ID saved on Blockchain</label>
+                      <div class="wrap-input100 rs1-wrap-input100">
+                        <input id="results-grapes-info-state" class="details-input100" type="text" readonly placeholder="Grapes State">
+                      </div>
+                      <div class="wrap-input100 rs2-wrap-input100">
+                        <input id="results-grapes-info-farmId"class="details-input100" type="text" readonly placeholder="Farm ID">
+                      </div>
+  
+                      <label class="details-label-input100">Grapes Notes saved on Blockchain</label>
+                      <div class="wrap-input100 validate-input">
+                        <textarea id="results-grapes-notes" class="details-input100" readonly placeholder="Grapes Notes"></textarea>
+                      </div>
+  
+                      <label class="details-label-input100">Grapes Farm Name saved on Blockchain</label>
+                      <div class="wrap-input100">
+                        <input id="results-grapes-info-name" class="details-input100" type="text" readonly placeholder="Farm Name">  
+                      </div>
+  
+                      <label class="details-label-input100">Grapes Farm Co-ordinates saved on Blockchain</label>
+                      <div class="wrap-input100 rs1-wrap-input100">
+                        <input id="results-farm-latitude" class="details-input100" type="text" readonly placeholder="Farm Latitude">
+                      </div>
+                      <div class="wrap-input100 rs2-wrap-input100">
+                        <input id="results-farm-longitude"class="details-input100" type="text" readonly placeholder="Farm Longitude">
+                      </div>
+              
+                      <label class="details-label-input100">Farm Address saved on Blockchain</label>
+                      <div class="wrap-input100 validate-input">
+                        <textarea id="results-farm-address" class="details-input100" readonly placeholder="Farm Address"></textarea>
+                      </div>
+  
+                      <div class="container-contact100-form-btn">
+                        <button class="details-contact100-form-btn" id="details-proceed-button"type="submit" style="display: none;">
+                          Proceed
+                        </button>
+                      </div>
+  
+                    </form>
+          </div>
+      </body>
+</html>
